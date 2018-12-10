@@ -21,12 +21,16 @@ namespace FirstCoreMvc.TagHelpers
                 new Employee{Id=3,CityId=63,FirstName="Derin",LastName="YAYLA"}
             };
         }
+        private const string ListCountAttributeName = "count";
+        [HtmlAttributeName(ListCountAttributeName)]
+        public int ListCount { get; set; }
+        
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
 
             StringBuilder sb = new StringBuilder();
-            var query = _employees;
+            var query = _employees.Take(ListCount);
             foreach (var item in query)
             {
                 sb.AppendFormat("<h2><a href='/employee/detail/{0}'>{1}</a></h2>",item.Id,item.FirstName);
