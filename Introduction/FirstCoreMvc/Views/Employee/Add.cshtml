@@ -1,6 +1,7 @@
 ﻿@model FirstCoreMvc.Controllers.Model.EmployeeAddViewModel
     <form asp-controller="Employee" asp-action="Add">
-        <label asp-for="Employee.Id"></label> <input asp-for="@Model.Employee.Id" /><br />
+        
+        <label asp-for="Employee.Id"></label> <input asp-for="Employee.Id" /><br />
         <label asp-for="Employee.FirstName"></label><input asp-for="@Model.Employee.FirstName" /><br />
         <label asp-for="Employee.LastName"></label><input asp-for="@Model.Employee.LastName" value="Deneme" /><br />
         <label asp-for="Employee.CityId"></label><select asp-for="@Model.Employee.CityId" asp-items="Model.Cities"></select><br />

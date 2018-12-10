@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstCoreMvc
@@ -26,9 +27,14 @@ namespace FirstCoreMvc
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc(routes=> {
-                routes.MapRoute(name:"default",template:"{controller=home}/{action=index}/{id?}");
-            });
+            app.UseMvc(ConfigureRoutes);
+        }
+
+        private void ConfigureRoutes(IRouteBuilder route)
+        {
+            //Conventional Routing (Geleneksel)
+            route.MapRoute("default","{controller=Home}/{action=Index}/{id?}");
+            route.MapRoute("MyRoute", "Engin/{controller=Home}/{action=Index}/{id?}");
         }
     }
 }
