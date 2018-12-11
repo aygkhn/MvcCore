@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FirstCoreMvc.Model;
 using FirstCoreMvc.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FirstCoreMvc
@@ -18,6 +20,8 @@ namespace FirstCoreMvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            var connection = @"Server=GOKHANAY;Database=SchoolDb;uid=sa;password=1";
+            services.AddDbContext<SchoolContext>(options=>options.UseSqlServer(connection));
             services.AddScoped<ICalculator,Calculator8>();
             //services.AddSingleton
            // services.AddTransient
