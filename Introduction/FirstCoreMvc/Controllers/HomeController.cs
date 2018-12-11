@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FirstCoreMvc.Entities;
+using FirstCoreMvc.Services;
 using FirstCoreMvc.Views;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,12 @@ namespace FirstCoreMvc.Controllers
 {
     public class HomeController : Controller
     {
+
+        private ICalculator _calculator;
+        public HomeController(ICalculator calculator)
+        {
+            _calculator = calculator;
+        }
         public IActionResult Index()
         {
             return View();
@@ -43,6 +50,10 @@ namespace FirstCoreMvc.Controllers
         public string RouteData(int id)
         {
             return id.ToString();
+        }
+        public string Calculate()
+        {
+            return _calculator.Calculate(100).ToString();
         }
     }
 }

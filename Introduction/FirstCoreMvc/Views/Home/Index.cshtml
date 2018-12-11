@@ -9,13 +9,22 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 
     @using (Html.BeginForm())
     {
-        <input type="text" value="Deneme" />
-        <input type="submit" value="Kaydet" />
+    <div class="container">
+        <div class="row center-block">
+            <div class="col-md-1">
+                <a href="" class="btn btn-success">Kaydetme</a>
+            </div>
+            <div class="col-md-1">
+                <input type="submit" value="Kaydet" />
+            </div>
+        </div>
+        </div>
     }
 </body>
 </html>
