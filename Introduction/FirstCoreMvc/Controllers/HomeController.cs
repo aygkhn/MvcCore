@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FirstCoreMvc.Entities;
+using FirstCoreMvc.ExtensionMethods;
 using FirstCoreMvc.Services;
 using FirstCoreMvc.Views;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FirstCoreMvc.Controllers
@@ -17,9 +19,13 @@ namespace FirstCoreMvc.Controllers
         {
             _calculator = calculator;
         }
-        public IActionResult Index()
+        public string Index()
         {
-            return View();
+            if (HttpContext.Session!=null)
+            {
+                return HttpContext.Session.GetObject().ToString();
+            }
+            return "";
         }
         public IActionResult Index2(string key)
         {
